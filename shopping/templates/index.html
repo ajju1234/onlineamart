@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+{% for message in messages %}
+    <strong>{{message}}</strong>
+{% endfor %}
+
+<div class="grid-container">
+    {% for product in products %}
+    
+    <div class="box">
+        <img class="thumbnail" src={{product.imageURL}} style="padding: 50px 100px 50px 100px;">
+        <div class="box-element">
+            <h6><strong>{{ product.title }}</strong></h6>
+            <hr>
+            <a href="{% url 'add_to_cart' product_id=product.id %}" class="btn btn-success"
+                role="button"> Add to Cart</a>
+            <h4 style="display: inline-block; float: right;"><strong>₹{{product.unit_price}}</strong></h4>
+
+<!--         <div class=""> -->
+            <a href="{% url 'product_details' product_id=product.id %}" class="btn btn-success" role="button">View Details</a>
+        <!-- </div> -->
+     </div>
+     <br><br>
+ </div>
+     {% endfor %}
+</div>  
+{% endblock %}
